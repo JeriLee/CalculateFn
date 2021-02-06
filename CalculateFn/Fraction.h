@@ -35,7 +35,7 @@ namespace Jeri {
       return numberator_ / (double)denominator_;
     }
 
-    Fraction operator + (const Fraction& rhs) {
+    Fraction operator + (const Fraction& rhs) const {
       T lcm = Lcm(denominator_, rhs.denominator_);
       return Fraction(lcm / denominator_ * numberator_ + lcm / rhs.denominator_ * rhs.numberator_, lcm);
     }
@@ -67,11 +67,11 @@ namespace Jeri {
     }
 
   private:
-    T Gcd(T a, T b) {
+    static T Gcd(T a, T b) {
       return b == 0 ? a : Gcd(b, a % b);
     }
 
-    T Lcm(T a, T b) {
+    static T Lcm(T a, T b) {
       return a / Gcd(a, b) * b;
     }
   };

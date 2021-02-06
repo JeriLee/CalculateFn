@@ -2,11 +2,12 @@
 
 #include <vector>
 #include "Fraction.h"
+typedef long long Int;
 
 namespace Jeri {
   class Equation {
   public:
-    typedef long long Int;
+
     Equation(std::vector<Fraction<Int>>& sources, Int val) : a(sources), result(val) {
     }
 
@@ -24,15 +25,21 @@ namespace Jeri {
     //  return Equation(1);
     //}
 
-    Equation operator*(const Fraction<Int>& mulpti) {
-
-    }
-
-    Equation operator +(const Equation& rhs) const {
+    Equation operator * (const Fraction<Int>& mulpti) {
       int length = Length();
       Equation result(length);
       for (int index = 0; index < length; ++index) {
-        result[index] = a[index] + 
+        result[index] = a[index] * mulpti;
+      }
+      return result;
+    }
+
+    Equation operator +(const Equation& rhsConst) const {
+      Equation& rhs = const_cast<Equation&>(rhsConst);
+      int length = Length();
+      Equation result(length);
+      for (int index = 0; index < length; ++index) {
+        result[index] = a[index] + rhs[index];
       }
       return result;
     }
