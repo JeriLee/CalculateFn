@@ -4,15 +4,6 @@
     <ClCompile Include="CalculateFn.cpp">
       <Filter>Function</Filter>
     </ClCompile>
-    <ClCompile Include="Determinant.cpp">
-      <Filter>Function</Filter>
-    </ClCompile>
-    <ClCompile Include="Equation.cpp">
-      <Filter>Function</Filter>
-    </ClCompile>
-    <ClCompile Include="Fraction.cpp">
-      <Filter>Function</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Determinant.h">

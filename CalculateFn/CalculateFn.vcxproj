@@ -140,9 +140,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="CalculateFn.cpp" />
-    <ClCompile Include="Determinant.cpp" />
-    <ClCompile Include="Equation.cpp" />
-    <ClCompile Include="Fraction.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Determinant.h" />
