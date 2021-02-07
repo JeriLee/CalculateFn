@@ -1,7 +1,7 @@
 #pragma once
 
 #include <stdint.h>
-
+#include <string>
 namespace Jeri {
   template<typename T>
   class Fraction {
@@ -23,15 +23,15 @@ namespace Jeri {
       }
     }
 
-    T GetDenominator() {
+    T GetDenominator() const {
       return denominator_;
     }
 
-    T GetNumberator() {
+    T GetNumberator() const {
       return numberator_;
     }
 
-    operator double() {
+    operator double() const {
       return numberator_ / (double)denominator_;
     }
 
@@ -40,27 +40,31 @@ namespace Jeri {
       return Fraction(lcm / denominator_ * numberator_ + lcm / rhs.denominator_ * rhs.numberator_, lcm);
     }
 
-    Fraction operator - (const Fraction& rhs) {
+    Fraction operator - (const Fraction& rhs) const {
       T lcm = Lcm(denominator_, rhs.denominator_);
       return Fraction(lcm / denominator_ * numberator_ - lcm / rhs.denominator_ * rhs.numberator_, lcm);
     }
 
-    Fraction operator * (const Fraction& rhs) {
+    Fraction operator * (const Fraction& rhs) const {
       T gcd1 = Gcd(numberator_, rhs.denominator_);
       T gcd2 = Gcd(denominator_, rhs.numberator_);
       return Fraction((numberator_ / gcd1) * (rhs.numberator_ / gcd2), (rhs.denominator_ / gcd1) * (denominator_ / gcd2));
     }
 
-    Fraction operator / (const Fraction& rhs) {
+    Fraction operator / (const Fraction& rhs) const {
       return (*this) * Fraction(rhs.denominator_, rhs.numberator_);
     }
 
-    bool operator == (int val) {
+    bool operator == (int val) const {
       return denominator_ == 1 && numberator_ == val;
     }
 
-    bool operator == (const Fraction& rhs) {
+    bool operator == (const Fraction& rhs) const {
       return denominator_ == rhs.denominator_ && numberator_ == rhs.numberator_;
+    }
+
+    std::string ToString() const {
+      return "(" + std::to_string(numberator_) + "/" + std::to_string(denominator_) + ")";
     }
 
     ~Fraction() {
